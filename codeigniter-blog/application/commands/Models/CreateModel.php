@@ -4,7 +4,9 @@ namespace App\Commands\Models;
 use CodeIgniter\CLI\BaseCommand;
 class CreateModel extends BaseCommand{
     //copio codigo que proporciona el curso
-    //probando git hub
+    //probando git hub//
+
+    //probando
     /**
 	 * The group the command is lumped under
 	 * when listing commands.
