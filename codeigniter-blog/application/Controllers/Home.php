@@ -2,24 +2,18 @@
 use App\Models\User;
 use CodeIgniter\Controller;
 
-class Home extends Controller
+class Home extends BaseController
 {
 	public function index()
 	{	
-		//elimino el return
-		//return view('welcome_message');
-		//creo las instancias
-		$userModel = new User;
-		$userEntity= new\App\Entities\User;
-		//la data que se quiere insertar
-		$data =[
-			'name' => 'usuario1',
-			'email'    => 'usuario1@mail.com',
-			'password' => 'secret'
-		];
-		$userEntity->fill($data);//pasamos los datos que queremos insertar
-		//se hace persistente
-		$userModel->save($userEntity);//entidad que queremos insertar
+		return $this->view('auth/register', 'pagina de registro');
+		
+	}
+
+	public function flash(){
+		
+		session()->setFlashdata('message','Nueva sesion flash');
+		return redirect('/flash');
 	}
 
 	//--------------------------------------------------------------------

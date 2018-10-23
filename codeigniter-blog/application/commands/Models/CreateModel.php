@@ -2,6 +2,7 @@
 namespace App\Commands\Models;
 
 use CodeIgniter\CLI\BaseCommand;
+use CodeIgniter\CLI\CLI;
 class CreateModel extends BaseCommand{
     //copio codigo que proporciona el curso
     //probando git hub//
@@ -65,6 +66,7 @@ class CreateModel extends BaseCommand{
 
 		if (empty($name))
 		{
+            //importar la clase cli
 			$name = CLI::prompt('El nombre del modelo es requerido');
 		}
 
