@@ -13,7 +13,7 @@ class Home extends BaseController
 	public function flash(){
 		
 		session()->setFlashdata('message','Nueva sesion flash');
-		return redirect('/flash');
+		return redirect('/');
 	}
 
 	//--------------------------------------------------------------------

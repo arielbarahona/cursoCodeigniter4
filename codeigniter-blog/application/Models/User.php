@@ -15,6 +15,11 @@ class User extends Model{
     //meotdo
     public function withPosts(): array{
         //post que tendran los usuarios
+        return $this
+			->where('users.id', session('id'))
+			->join('posts', 'user_id = ' . session('id'), 'JOIN')
+			->get()
+			->getResult();
     }
 }
 

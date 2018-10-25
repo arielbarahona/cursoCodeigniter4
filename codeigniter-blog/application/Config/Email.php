@@ -5,12 +5,12 @@ class Email
 	/**
 	 * @var string
 	 */
-	public $fromEmail;
+	public $fromEmail='admin@blogci4.com';
 
 	/**
 	 * @var string
 	 */
-	public $fromName;
+	public $fromName='blog CI4';
 
 	/**
 	 * The "user agent"
@@ -22,7 +22,7 @@ class Email
 	 * The mail sending protocol: mail, sendmail, smtp
 	 * @var string
 	 */
-	public $protocol = 'mail';
+	public $protocol = 'smtp';
 
 	/**
 	 * The server path to Sendmail.
@@ -34,19 +34,19 @@ class Email
 	 * SMTP Server Address
 	 * @var string
 	 */
-	public $SMTPHost;
+	public $SMTPHost = 'smtp.mailtrap.io';
 
 	/**
 	 * SMTP Username
 	 * @var string
 	 */
-	public $SMTPUser;
+	public $SMTPUser = '01ff0164f83b4c';
 
 	/**
 	 * SMTP Password
 	 * @var string
 	 */
-	public $SMTPPass;
+	public $SMTPPass = 'c55144a0aac362';
 
 	/**
 	 * SMTP Port
@@ -88,7 +88,7 @@ class Email
 	 * Type of mail, either 'text' or 'html'
 	 * @var string
 	 */
-	public $mailType = 'text';
+	public $mailType = 'html';
 
 	/**
 	 * Character set (utf-8, iso-8859-1, etc.)

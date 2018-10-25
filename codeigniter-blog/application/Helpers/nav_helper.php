@@ -3,27 +3,27 @@
 if(!function_exists('nav')){
     function nav_menu(): void{
         //rutas
-        // $list =[
-        //     ['dashboard',true],
-        //     ['posts',true],
-        //     ['profile',true],
-        //     ['ajax',true],
-        //     ['relations',true],
-        //     ['logout',true],
-        //     ['login',false],
-        //     ['register',false]
-        // ];
-
-        $list =[
-            ['dashboard',false],
-            ['posts',false],
-            ['profile',false],
-            ['ajax',false],
-            ['relations',false],
-            ['logout',false],
-            ['login',true],
-            ['register',true]
+         $list =[
+            ['dashboard',true],
+            ['posts',true],
+            ['profile',true],
+            ['ajax',true],
+            ['relations',true],
+            ['logout',true],
+            ['login',false],
+            ['register',false]
         ];
+
+        // $list =[
+        //     ['dashboard',false],
+        //     ['posts',false],
+        //     ['profile',false],
+        //     ['ajax',false],
+        //     ['relations',false],
+        //     ['logout',false],
+        //     ['login',true],
+        //     ['register',true]
+        // ];
 
         $request=\Config\Services::request();
         $segment=$request->uri->getSegment(1);

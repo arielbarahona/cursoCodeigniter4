@@ -1,5 +1,8 @@
 <?php namespace Config;
 
+      use CodeIgniter\Router\RouteCollection;
+
+
 /**
  * --------------------------------------------------------------------
  * URI Routing
@@ -74,7 +77,65 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->add('/', 'Home::index');
-$routes->get('/flash', 'Home::flash');
+//agregando la ruta
+//$routes->get('/flash', 'Home::flash');
+//$routes->get('/register', 'AuthController::registerForm');//GET->para mostrsr el formulario
+//$routes->post('/register', 'AuthController::registerForm');//POST->para procesar el form
+
+//se pueden agregar ambas funcionalidades: con MATCH
+$routes->match(['GET','POST'], '/register','AuthController::register');//RUTA DE REGISTRO
+//     /register-> es la ruta
+//		register--> metodo
+//      AuthController----> controlador
+
+$routes->match(['GET','POST'], '/login','AuthController::login');//RUTA DE LOGIN
+
+
+//RUTAS DEL DASHBOARD
+$routes->get('/dashboard', 'DashboardController::index');
+$routes->get('/logout', 'DashboardController::logout');
+
+//RUTAS POST DEL DASHBOARD
+$routes->get('/posts','PostController::index');
+$routes->match(['GET','POST'],'/posts/create' ,'PostController::create',['as'=>'posts_create']);
+$routes->match(['GET','POST'], '/posts/edit/(:num)','PostController::edit/$1',['as'=>'posts_edit']);
+$routes->get('/posts/destroy/(:num)', 'PostController::destroy/$1',['as'=>'posts_destroy']);
+
+// $routes->group( 'posts', [], function (RouteCollection $routes) {
+// 	$routes->get( '/', 'PostController::index');
+// 	$routes->match(['GET', 'POST'], 'create', 'PostController::create', ['as' => 'posts_create']);
+// 	$routes->match(['GET', 'POST'],'edit/(:num)', 'PostController::edit/$1', ['as' => 'posts_edit']);
+// 	$routes->get( 'destroy/(:num)', 'PostController::destroy/$1', ['as' => 'posts_destroy']);
+// });
+
+
+//RUTAS DE PERFIL---profile
+$routes->get('/profile', 'ProfileController::index');
+$routes->post('/profile', 'ProfileController::updateProfile');
+
+//relations
+$routes->get('/relations','RelationController::index');
+
+//Ajax Routes
+$routes->get('/ajax', 'AjaxController::index');
+$routes->post('/ajax/load', 'AjaxController::loadPosts' , ['as'=> 'load_posts_with_ajax']);
+
+//API routes
+$routes->group(
+	'api',
+	[
+		'namespace' => 'App\Controllers\Api',
+	],
+	function (RouteCollection $routes) {
+		$routes->resource('courses', [
+			'controller' => 'CourseController'
+		]);
+	}
+);
+
+
+
+
 
 /**
  * --------------------------------------------------------------------

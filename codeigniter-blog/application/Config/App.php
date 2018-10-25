@@ -33,7 +33,10 @@ class App extends BaseConfig
 	| variable so that it is blank.
 	|
 	*/
-	public $indexPage = 'index.php';
+
+	//Quitamos el Index.php
+	//public $indexPage = 'index.php';
+	public $indexPage = '';
 
 	/*
 	|--------------------------------------------------------------------------
@@ -244,7 +247,7 @@ class App extends BaseConfig
 	| CSRFRegenerate  = Regenerate token on every submission
 	| CSRFRedirect    = Redirect to previous page with error on failure
 	*/
-	public $CSRFTokenName   = 'csrf_test_name';
+	public $CSRFTokenName   = 'csrf_blog'; //cambio esta parte
 	public $CSRFCookieName  = 'csrf_cookie_name';
 	public $CSRFExpire      = 7200;
 	public $CSRFRegenerate  = true;

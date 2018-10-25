@@ -1,5 +1,7 @@
 <?php namespace Config;
 
+use App\Filters\Auth;
+use App\Filters\Guest;
 use CodeIgniter\Config\BaseConfig;
 
 class Filters extends BaseConfig
@@ -9,14 +11,19 @@ class Filters extends BaseConfig
 	public $aliases = [
 		'csrf' 	  => \App\Filters\CSRF::class,
 		'toolbar' => \App\Filters\DebugToolbar::class,
-		'honeypot' => \App\Filters\Honeypot::class
+		'honeypot' => \App\Filters\Honeypot::class,
+		'auth'=>Auth::class,
+		'guest'=>Guest::class,
+		'api-auth'=>ApiAuth::class
 	];
-
+	//modificamos esta parte
 	// Always applied before every request
 	public $globals = [
 		'before' => [
 			//'honeypot'
-			// 'csrf',
+			'csrf'=>['except'=>[
+				'api/*'
+			]], //habilitamos este campo
 		],
 		'after'  => [
 			'toolbar',
@@ -32,5 +39,11 @@ class Filters extends BaseConfig
 	// List filter aliases and any before/after uri patterns
 	// that they should run on, like:
 	//    'isLoggedIn' => ['before' => ['account/*', 'profiles/*']],
-	public $filters = [];
+	public $filters = [
+		'auth'=>['before'=>['dashboard','posts','ajax', 'profile', 'relations']],
+		'guest'=>['before'=>['login','register']],
+		'api-auth' =>['before' => ['api']]
+		
+	];
+		
 }

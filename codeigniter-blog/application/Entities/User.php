@@ -46,10 +46,11 @@ class User extends Entity{
 	 */
 	protected $deleted_at;
 
+	//mw wncripta la contrasena
 	protected function setPassword (string $password) {
 		$this->password = password_hash( $password, PASSWORD_BCRYPT);
 	}
-	//metodo para la fecha:
+	//metodo para la fecha:   
 	public function createdOn ($format = 'Y-m-d') {
 		$date = new \DateTime($this->created_at);
 		return $date->format($format);

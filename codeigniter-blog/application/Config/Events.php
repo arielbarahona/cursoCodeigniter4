@@ -1,5 +1,6 @@
 <?php namespace Config;
 
+use App\Libraries\Auth;
 use CodeIgniter\Events\Events;
 
 /*
@@ -19,7 +20,14 @@ use CodeIgniter\Events\Events;
  *      Events::on('create', [$myInstance, 'myMethod']);
  */
 
-
+Events::on('userRegistered', function (array $postEscapedData) {
+	Auth::sendEmail(
+		$postEscapedData['email'],
+		'Gracias por registrarte',
+		$postEscapedData['name'],
+		'emails/register'
+	);
+});
 
 /*
  * --------------------------------------------------------------------
